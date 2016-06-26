@@ -1,0 +1,18 @@
+{
+  "name": "nicotec/minios",
+  "license": "MIT",
+  "type": "project",
+  "description": "Mini Framework",
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  },
+  "require": {
+    "php": ">=5.3.3"
+  },
+  "support": {
+    "name": "Nicolas Longuet",
+    "email": "nicolas.longuet@gmail.com"
+  }
+}
