@@ -27,6 +27,7 @@ class HomeController extends Controller
     public function articlesAction()
     {
         $pdo = $this->getPdo();
+        //var_dump($pdo);die();
         $articles = $pdo->query('Select * From article')->fetchAll();
 
         return $this->render('Home/articles.php', [
@@ -78,7 +79,7 @@ class HomeController extends Controller
 //
 //        $salle = $this->getRepository('Salle')->find(3);
 //
-//        return $this->render('contact.php', [
+//        return $this->render('Contact.php', [
 //            'page'  => $request->get('page'),
 //            'salle' => $salle,
 //        ]);

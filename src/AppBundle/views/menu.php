@@ -15,6 +15,8 @@
             <ul class="nav navbar-nav">
                 <li><a href="<?php echo $path('wiki') ?>">Wiki</a></li>
                 <li><a href="<?php echo $path('articles') ?>">Articles</a></li>
+                <li><a href="<?php echo $path('listContact') ?>">Liste de users</a></li>
+                <li><a href="<?php echo $path('listProduits') ?>">Liste de produits</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -25,7 +27,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li class="dropdown-header">Informations</li>
-                        <li><a href="#">Profil</a></li>
+                        <li><a href="<?php echo $path('Contact'); ?>" >Profil</a></li>
                         <li role="separator" class="divider"></li>
                         <li class="dropdown-header">Autre</li>
                         <li><a href="#">Deconnexion</a></li>
