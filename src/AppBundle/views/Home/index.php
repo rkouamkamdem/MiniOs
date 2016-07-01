@@ -1,4 +1,6 @@
-<?php include __DIR__ . '/../top.php'; ?>
+<?php include __DIR__ . '/../top.php';
+//phpinfo();
+?>
 
 <div class="container">
     <div class="col-md-12">

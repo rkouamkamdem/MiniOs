@@ -9,7 +9,7 @@
 
     <div class="text-center bg-danger "><p><?php echo $msgError; ?></p></div>
 
-
+    <h3>Ajouter un contact en remplissant le formulaire ci-dessous.</h3>
     <div class="col-md-12 well">
         <form method="post" action="<?php echo $path('Contact') ?>" class="form-horizontal" enctype="multipart/form-data">
 

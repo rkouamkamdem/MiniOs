@@ -69,6 +69,7 @@
     </div>
 </nav>
 
+<!-- ------------------------------------------------------  Formulaire d'inscription --------------------------------------------   -->
 
 <div class="modal fade" id="formulaire" >
     <div class="modal-dialog">
@@ -79,8 +80,8 @@
             </div>
 
             <div class="modal-body">
-
-                <form action="<?php echo $path('incription'); ?>" method="post" >
+                <p id="warningInscription" style="display:none; color: red;" ></p>
+                <form action="<?php echo $path('incription'); ?>" method="post" id="formInscriptionId" >
 
                     <div class="form-group">
                         <label for="nom">Nom</label>
@@ -99,7 +100,7 @@
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="inscription[email]" id="email" placeholder="Votre Email">
+                        <input type="email" class="form-control" name="inscription[email]" id="emailInscription" placeholder="Votre Email">
                     </div>
 
                     <div class="form-group">
@@ -107,7 +108,9 @@
                         <input type="password" class="form-control" name ="inscription[password]" id="password" placeholder="Votre mot de passe">
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Envoyer</button>
+
+                    <button type="button" class="btn btn-primary" data-url="<?php echo $path('validInscription'); ?>" data-id="sggsfg" id="submitFormInscription" >Envoyer</button>
+
                     <div class="modal-footer" style="margin-top: -8.9%;">
                         <button class="btn btn-info" data-dismiss="modal">Annuler</button>
                     </div>
@@ -120,8 +123,7 @@
     </div>
 </div>
 
-
-<!-- Formulaire de login -->
+<!-- ------------------------------------------------------  Formulaire de login --------------------------------------------   -->
 <div class="modal fade" id="login" >
     <div class="modal-dialog">
         <div class="modal-content">

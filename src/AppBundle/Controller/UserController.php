@@ -82,8 +82,7 @@ class UserController extends Controller
         $pdo = $this->getPdo();
         $request = $this->getRequest();
 
-
-        if($_SERVER['REQUEST_METHOD'] === 'POST')
+        if( $_SERVER['REQUEST_METHOD'] === 'POST' )
         {
             if( isset($_REQUEST['login']) )
             {

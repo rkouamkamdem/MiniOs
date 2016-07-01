@@ -1,6 +1,7 @@
 <?php include __DIR__ . '/../top.php'; ?>
 
 <div class="container">
+    <div class="row">
     <div class="col-md-12">
         <h2>Liste exhaustive des contacts.</h2>
 
@@ -39,6 +40,9 @@
                 </tr>
             <?php endforeach ?>
         </table>
+        <a href="<?php echo $path('Contact') ?>" class="btn btn-primary btn-block">Ajouter un contact</a>
+
+    </div>
     </div>
 </div>
 

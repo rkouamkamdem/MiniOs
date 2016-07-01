@@ -8,6 +8,7 @@ class HomeController extends Controller
 {
     public function indexAction()
     {
+        //echo __NAMESPACE__;
         return $this->render('Home/index.php');
     }
 

@@ -11,6 +11,13 @@ $routes = [
         'action'     => 'contactAction',
     ],
 
+    'validInscription'       => [
+        'url'        => '/inscription/valid',
+        'controller' => 'ValidInscriptionController',
+        'action'     => 'validInscriptionAction',
+    ],
+    
+    
     'createProduit'       => [
     'url'        => '/produit/create',
     'controller' => 'ProduitController',
