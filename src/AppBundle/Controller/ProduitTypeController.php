@@ -5,7 +5,7 @@ namespace AppBundle\Controller;
 use Framework\Controller;
 use PDO;
 
-class ProduitController extends Controller
+class ProduitTypeController extends Controller
 {
     public function readAction()
     {
@@ -16,76 +16,39 @@ class ProduitController extends Controller
 
         return $this->render('Produit/read.php',['produit' => $produit, 'id' => $id]);
     }
-    
-    public function produitsAction()
+
+    public function ProduitTypeAction()
     {
         $pdo = $this->getPdo();
-        $produits = $pdo->query('Select * From produit')->fetchAll();
-
-        return $this->render('Home/produits.php', [
-            'produits' => $produits,
+        $produitTypes = $pdo->query('Select * From produit_type')->fetchAll();
+        //var_dump($produitTypes); die();
+        return $this->render('Home/produitTypes.php', [
+            'produitTypes' => $produitTypes,
         ]);
     }
 
     public function createAction()
     {
-        //Récupération des catégories en vue des les associer aux produits dès la création
-        
         $pdo = $this->getPdo();
         $request = $this->getRequest();
-        //var_dump($request->get('produit')['nom']);die();
+        $nomCategorie="";  $msgSuccess=""; $msgError ="";
 
-        //$produits = $pdo->query('Select * From produit')->fetchAll();
-        $nomProduit="";  $description=""; $prix=0.0; $msgSuccess=""; $msgError ="";$prixTTC=0.0;
-        $action = "createProduit";
-        $disponible = "checked='checked'";
-        $submitLib = "Créer le produit";
         $readonly = "readonly='readonly'";
 
-        if( !empty($request->get('produit')['nom']) and !empty($request->get('produit')['description']) and !empty($request->get('produit')['prix']) )
+        if( !empty($request->get('categorie')['nom']) )
         {
-            $is_valid = true;
-            $nomProduit=$request->get('produit')['nom'];
-            $description = $request->get('produit')['description'];
-            $prix = $request->get('produit')['prix'];
-            $prix_ttc = 0.0;
-            $created = new \DateTime("now");
-            $dateCreation = $created->format('Y-m-d H:i:s');
-            $produit_type_id = 1;
-            //var_dump($dateCreation);die('passe par là!!!');produit_type_id
-
-            $sql = 'INSERT INTO produit (
-                nom,
-                is_valid,
-                description,
-                created,
-                prix_ht
-            ) VALUES(
-            ' . $pdo->quote($nomProduit) . ', 
-            ' . $is_valid . ',
-            ' . $pdo->quote($description) . ',
-            ' . $pdo->quote($dateCreation) . ',
-            ' . $prix . '
-            )
-            '; //,' . $prix_ttc . ','.$produit_type_id.'
+            $nomCategorie = $request->get('categorie')['nom'];
+            $sql = 'INSERT INTO produit_type (nom) VALUES(' . $pdo->quote($nomCategorie) . ') ';
             //echo $sql;
             $nbrLigne = $pdo->exec($sql);
 
-            //Après la création je me dirige vers l'écran affichant tous les produits
-            return $this->produitsAction();
-            //return $this->render('Home/produits.php', []);//['produits' => $produits]
+            //Après la création je me dirige vers l'écran affichant toutes les categorie
+            return $this->ProduitTypeAction();
         }
-
-        return $this->render('Produit/create.php', [
-            'nomProduit' => $nomProduit,
-            'description' => $description,
-            'prix' => $prix,
-            'prixTTC' => $prixTTC,
+        return $this->render('ProduitType/create.php', [
+            'nomCategorie' => $nomCategorie,
             'msgSuccess' => $msgSuccess,
             'msgError' => $msgError,
-            'action' => $action,
-            'disponible' => $disponible,
-            'submitLib' => $submitLib,
             'readonly' => $readonly
 
         ]);
@@ -98,7 +61,7 @@ class ProduitController extends Controller
         //var_dump($request); die();
         $id = $request->get('id');
         $pdo = $this->getPdo();
-        $msgSuccess=""; $msgError =""; $libelleForm="";
+        $msgSuccess=""; $msgError ="";
         //Mis à jour du produit
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             if (isset($_REQUEST['produit'])){
@@ -126,7 +89,7 @@ class ProduitController extends Controller
             }
             $msgSuccess="Modification reussie !!!"; $msgError ="";
         }
-        
+
         $produitSingle = $pdo->query('Select * From produit WHERE id = '.$id.' ')->fetchAll();
         //var_dump($produitSingle); die();
         $action = "updateProduit";
@@ -138,9 +101,8 @@ class ProduitController extends Controller
         $submitLib = "Modifier le produit";
         $readonly = "readonly='readonly'";
         $created = $produitSingle[0]['created'];
-        $libelleForm = "Modification du produit N° ".$id."";
 
-       // var_dump($produitSingle);die();
+        // var_dump($produitSingle);die();
         return $this->render('Produit/update.php', [
             'produitSingle' => $produitSingle,
             'id' => $id,
@@ -154,8 +116,7 @@ class ProduitController extends Controller
             'disponible' => $disponible,
             'submitLib' => $submitLib,
             'readonly' => $readonly,
-            'created' => $created,
-            'libelleForm' => $libelleForm
+            'created' => $created
         ]);
     }
 
@@ -171,10 +132,5 @@ class ProduitController extends Controller
         $removeProduit->execute();
         //Après la suppression   je me dirige vers l'écran affichant tous les produits
         return $this->produitsAction();
-        /*
-        $produits = $pdo->query('Select * From produit WHERE id = '.$id.' ')->fetchAll();
-        return $this->render('Home/produits.php', [
-            'produits' => $produits,
-        ]);*/
     }
 }

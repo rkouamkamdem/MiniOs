@@ -14,8 +14,7 @@
 
                 <h4>Nbre total de produits :  <?php echo count($produits); //var_dump($produits); //echo count($produits); ?></h4>
 
-                <table class="table table-bordered">
-
+                <table class="table table-bordered" >
                     <tr>
                         <th>Nom produit</th>
                         <th>Date de création</th>

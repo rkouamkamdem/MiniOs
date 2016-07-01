@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="col-md-12">
-        <h2>Liste exhaustive des utilisateurs ou clients.</h2>
+        <h2>Liste exhaustive des contacts.</h2>
 
         <!--<p class="bg-success">
             Ouvrez le fichier src/AppBundle/views/Home/bdd.php afin de regarder le code en même temps que les exemples

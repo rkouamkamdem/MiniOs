@@ -6,9 +6,9 @@ if(!empty($produit))
     
     <div class="container">
         <div class="col-md-12">
-            <h2>Detail du produit N° <?php echo $id; ?>. </h2>
+            <h2>Detail du produit N° <?php echo $id; //var_dump($produit); ?>. </h2>
 
-            <table class="table table-bordered hover">
+            <table class="table table-bordered hover" >
                 <?php foreach($produit as $value): ?>
 
                     <tr><th>Nom produit</th> <td><?php echo $value['nom']; ?></td></tr>
@@ -20,6 +20,8 @@ if(!empty($produit))
                     <tr><th>Description</th><td><?php echo $value['description']; ?></td>></tr>
 
                     <tr><th>Prix HT en €</th><td><?php echo $value['prix_ht']; ?></td></tr>
+
+                    <tr><th>Catégorie associée </th><td><?php if( $value['produit_type_id'] !== NULL ) echo $value['produit_type_id']; else echo "Aucune"; ?></td></tr>
 
                     <tr> <th>Action</th>
                         <td>

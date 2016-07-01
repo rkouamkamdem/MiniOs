@@ -9,7 +9,7 @@ if( !empty($msgSuccess) )
 if( !empty($msgError) )
 ?>
 <div class="text-center bg-danger "><p><?php echo $msgError; ?></p></div>
-
+<h2> <?php echo $libelleForm; ?>. </h2>
 <?php
 
 include 'formCreateUpdate.php';

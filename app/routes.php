@@ -17,6 +17,18 @@ $routes = [
     'action'     => 'createAction',
     ],
 
+    'produitsTypes' => [
+    'url'        => '/produitsTypes',
+    'controller' => 'ProduitTypeController',
+    'action'     => 'ProduitTypeAction',
+    ],
+
+    'produitTypeCreate'       => [
+        'url'        => '/produit-type/create',
+        'controller' => 'ProduitTypeController',
+        'action'     => 'createAction',
+    ],
+
     'listProduits'       => [
         'url'        => '/produits',
         'controller' => 'ProduitController',
@@ -35,10 +47,29 @@ $routes = [
         'action'     => 'updateAction',
     ],
 
-    'showProduit'      => [
+    'showProduit'    => [
         'url'        => '/produit',
         'controller' => 'ProduitController',
         'action'     => 'readAction',
+    ],
+    
+    
+    'showProduitType' => [
+    'url'        => '/produitType',
+    'controller' => 'ProduitTypeController',
+    'action'     => 'readAction',
+    ],
+
+    'updateProduitType' => [
+    'url'        => '/produitType/update',
+    'controller' => 'ProduitTypeController',
+    'action'     => 'updateAction',
+    ],
+
+    'deleteProduitType' => [
+        'url'        => '/produitType/delete',
+        'controller' => 'ProduitTypeController',
+        'action'     => 'deleteAction',
     ],
 
     'listContact'       => [
@@ -47,6 +78,36 @@ $routes = [
         'action'     => 'listAction',
     ],
 
+    'incription' => [
+    'url'        => '/register',
+    'controller' => 'UserController',
+    'action'     => 'registerAction',
+    ],
+
+    'login' => [
+    'url'        => '/login',
+    'controller' => 'UserController',
+    'action'     => 'loginAction',
+    ],
+    
+    'updateUser' => [
+        'url'        => '/user/update',
+        'controller' => 'UserController',
+        'action'     => 'updateAction',
+    ],
+
+    'profilUser' => [
+        'url'        => '/user/profil',
+        'controller' => 'UserController',
+        'action'     => 'showUserAction',
+    ],
+    
+    'userLogout' => [
+    'url'        => '/user/logout',
+    'controller' => 'UserController',
+    'action'     => 'userLogoutAction',
+],
+    
     'wiki'        => [
         'url'        => '/wiki',
         'controller' => 'HomeController',

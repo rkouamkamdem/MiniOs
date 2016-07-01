@@ -1,3 +1,17 @@
+<?php session_start();
+if( !empty($deconnexion) and !empty($_SESSION['user']) )
+{
+    session_destroy();
+    unset($_SESSION['user']);
+    //die('je passe par ici !!!');
+    //header('Location');http://minios.dev/app.php/index
+    header("Location: http://minios.dev/app.php/index");
+}
+
+if( !empty($session) and empty($_SESSION['user']) )
+    $_SESSION['user'] = $session;
+
+?>
 <html>
 
     <head>
